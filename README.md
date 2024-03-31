@@ -6,8 +6,7 @@ Welcome to the MyContacts Backend API! This is the backend API for managing cont
 
 ## Hosted link
 
-- Hosted on render.com
-- https://contact-management-backend-j0mk.onrender.com/api-docs/
+https://contact-management-backend-j0mk.onrender.com/api-docs/
 
 ## Table of Contents
 
