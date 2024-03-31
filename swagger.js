@@ -14,7 +14,7 @@ const swaggerOptions = {
         description: "Local Development Server",
       },
       {
-        url: "https://.onrender.com", 
+        url: "https://contact-management-backend-j0mk.onrender.com/", 
         description: "Hosted Server",
       },
     ],
