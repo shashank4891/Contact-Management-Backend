@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/dbConnection");
-const errorHandler = require("./middleware/errorHandler");
+const errorHandler = require("./Middleware/errorHandler");
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./swagger");
 

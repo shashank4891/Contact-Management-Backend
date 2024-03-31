@@ -5,7 +5,7 @@ const {
   loginUser,
   currentUser
 } = require("../controllers/usersController");
-const validateToken = require("../middleware/validateTokenHandler");
+const validateToken = require("../Middleware/validateTokenHandler");
 
 /**
  * @swagger
