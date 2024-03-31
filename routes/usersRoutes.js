@@ -1,45 +1,26 @@
 const express = require("express");
 const router = express.Router();
 const {
-    getContacts,
-    createContact, 
-    getContact, 
-    updateContact, 
-    deleteContact
-} = require("../controllers/contactController");
-const validateToken = require("../Middleware/validateTokenHandler");
+  registerUser,
+  loginUser,
+  currentUser
+} = require("../controllers/usersController");
+const validateToken = require("../middleware/validateTokenHandler");
 
 /**
  * @swagger
  * tags:
- *   name: Contacts
- *   description: Endpoints related to contact management
+ *   name: Users
+ *   description: Endpoints related to user management
  */
 
 /**
  * @swagger
- * /api/contacts:
- *   get:
- *     summary: Get all contacts.
- *     description: Retrieve all contacts from the database.
- *     tags: [Contacts]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Successfully retrieved contacts
- */
-router.get("/", validateToken, getContacts);
-
-/**
- * @swagger
- * /api/contacts:
+ * /api/users/register:
  *   post:
- *     summary: Create a new contact.
- *     description: Create a new contact in the database.
- *     tags: [Contacts]
- *     security:
- *       - bearerAuth: []
+ *     summary: Register a new user.
+ *     description: Register a new user in the system.
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
@@ -47,56 +28,25 @@ router.get("/", validateToken, getContacts);
  *           schema:
  *             type: object
  *             properties:
- *               name:
+ *               username:
  *                 type: string
  *               email:
  *                 type: string
- *               phone:
+ *               password:
  *                 type: string
  *     responses:
  *       201:
- *         description: Contact created successfully
+ *         description: User registered successfully
  */
-router.post("/", validateToken, createContact);
+router.post("/register", registerUser);
 
 /**
  * @swagger
- * /api/contacts/{id}:
- *   get:
- *     summary: Get a contact by ID.
- *     description: Retrieve a contact from the database by its ID.
- *     tags: [Contacts]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: ID of the contact to retrieve
- *     responses:
- *       200:
- *         description: Successfully retrieved contact
- */
-router.get("/:id", validateToken, getContact);
-
-/**
- * @swagger
- * /api/contacts/{id}:
- *   put:
- *     summary: Update a contact by ID.
- *     description: Update a contact in the database by its ID.
- *     tags: [Contacts]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: ID of the contact to update
+ * /api/users/login:
+ *   post:
+ *     summary: Login user.
+ *     description: Login user to the system.
+ *     tags: [Users]
  *     requestBody:
  *       required: true
  *       content:
@@ -104,38 +54,29 @@ router.get("/:id", validateToken, getContact);
  *           schema:
  *             type: object
  *             properties:
- *               name:
- *                 type: string
  *               email:
  *                 type: string
- *               phone:
+ *               password:
  *                 type: string
  *     responses:
  *       200:
- *         description: Contact updated successfully
+ *         description: User logged in successfully
  */
-router.put("/:id", validateToken, updateContact);
+router.post("/login", loginUser);
 
 /**
  * @swagger
- * /api/contacts/{id}:
- *   delete:
- *     summary: Delete a contact by ID.
- *     description: Delete a contact from the database by its ID.
- *     tags: [Contacts]
+ * /api/users/current:
+ *   get:
+ *     summary: Get current user.
+ *     description: Retrieve information about the current logged-in user.
+ *     tags: [Users]
  *     security:
  *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: ID of the contact to delete
  *     responses:
  *       200:
- *         description: Contact deleted successfully
+ *         description: Successfully retrieved current user
  */
-router.delete("/:id", validateToken, deleteContact);
+router.get("/current", validateToken, currentUser);
 
 module.exports = router;
