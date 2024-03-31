@@ -4,6 +4,10 @@
 
 Welcome to the MyContacts Backend API! This is the backend API for managing contacts in the MyContacts application. It provides endpoints to perform CRUD operations on contacts stored in the database. The API is built using Node.js and Express framework.
 
+## Hosted link
+
+https://contact-management-backend-j0mk.onrender.com/api-docs/
+
 ## Table of Contents
 
 1. [Introduction](#introduction)
