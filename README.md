@@ -1,4 +1,4 @@
-# MyContacts Backend API
+# Contact Management Backend API
 
 ## Introduction
 
